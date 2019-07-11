@@ -1,0 +1,14 @@
+spring:
+    application:
+      name: cache
+    profiles:
+      active: dev
+
+
+
+mybatis:
+  mapper-locations: classpath:com.hwy.cache.repository/*Mapper.xml    #把xml文件放在com.XX.mapper.*中可能会出现找不到的问题，这里把他放在resource下的mapper中
+  typeAliasesPackage: com.hwy.cache.entity        #这里是实体类的位置，#实体扫描，多个package用逗号或者分号分隔
+#  configuration:
+#    map-underscore-to-camel-case: true
+#    cache-enabled: false
