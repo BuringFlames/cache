@@ -32,10 +32,10 @@
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
+      <foreach collection="oredCriteria" item="criteria2" separator="or">
         <if test="criteria.valid">
           <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
+            <foreach collection="criteria.criteria" item="criterion2">
               <choose>
                 <when test="criterion.noValue">
                   and ${criterion.condition}
@@ -61,7 +61,7 @@
   </sql>
   <sql id="Update_By_Example_Where_Clause">
     <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+      <foreach collection="example.oredCriteria" item="criteria2" separator="or">
         <if test="criteria.valid">
           <trim prefix="(" prefixOverrides="and" suffix=")">
             <foreach collection="criteria.criteria" item="criterion">
@@ -164,6 +164,9 @@
       #{status,jdbcType=SMALLINT}, #{version,jdbcType=INTEGER}, #{createOperator,jdbcType=VARCHAR}, 
       #{updateOperator,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{datachangeLasttime,jdbcType=TIMESTAMP}, 
       #{value,jdbcType=LONGVARCHAR})
+    <selectKey keyProperty="dataId" resultType="java.lang.Integer">
+      select LAST_INSERT_ID() as id
+    </selectKey>
   </insert>
   <insert id="insertSelective" parameterType="com.hwy.cache.entity.TData">
     insert into t_data

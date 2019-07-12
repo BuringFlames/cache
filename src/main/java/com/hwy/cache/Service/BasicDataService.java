@@ -1,5 +1,7 @@
 package com.hwy.cache.Service;
 
+import com.hwy.cache.entity.TData;
+
 /**
  * @author hwy
  * @program cache
@@ -8,4 +10,10 @@ package com.hwy.cache.Service;
 public interface BasicDataService {
 
     int countAllData();
+
+    TData getDataById(int id);
+
+    int saveData(TData tData);
+
+    int deleteData(int id);
 }

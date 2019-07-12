@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-package com.hwy.cache.conf;
+package com.hwy.cache.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;

@@ -1,10 +1,6 @@
 package com.hwy.cache.entity;
 
-import java.io.Serializable;
-import javax.validation.constraints.NotNull;
-
-public class BUser implements Serializable {
-    @NotNull
+public class User {
     private Integer id;
 
     private String password;

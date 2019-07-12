@@ -1,8 +1,10 @@
 package com.hwy.cache.Service;
 
-import com.hwy.cache.entity.TDataExample;
+import com.hwy.cache.entity.TData;
 import com.hwy.cache.repository.TDataMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,5 +21,23 @@ public class BasicDataServiceImpl implements BasicDataService{
     @Override
     public int countAllData() {
         return tDataMapper.count();
+    }
+
+    @Override
+    @Cacheable(cacheNames = {"TData"})
+    public TData getDataById(int id) {
+        return tDataMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    @CachePut(key = "result.dataId")
+    public int saveData(TData tData) {
+        int id = tDataMapper.insert(tData);
+        return id;
+    }
+
+    @Override
+    public int deleteData(int id) {
+        return tDataMapper.deleteByPrimaryKey(id);
     }
 }
