@@ -28,7 +28,8 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User getUser(int id) {
-        UserEntry userEntry = CacheManager.getUser(id);
+        CacheManager cacheManager = new CacheManager();
+        UserEntry userEntry = cacheManager.getUser(id);
         if(userEntry != null) {
             User user = new User();
             BeanUtils.copyProperties(userEntry, user);
