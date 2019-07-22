@@ -3,9 +3,8 @@ package com.hwy.cache.cache;
 import com.hwy.cache.Utils.SpringUtil;
 import com.hwy.cache.common.Constants;
 import com.hwy.cache.entity.vo.UserEntry;
-import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
@@ -16,19 +15,18 @@ import java.util.Collection;
  * @date 2019/7/11 19:26
  */
 @Component
-public final class CacheManager implements ApplicationContextAware {
+public final class CacheManager {
 
-    private ApplicationContext applicationContext;
+    @Autowired
+    ApplicationContext applicationContext;
 
     public CacheManager() {
         this.userCache = SpringUtil.getBean(UserCache.class);
     }
 
+    @Autowired
     private UserCache userCache;
 
-    public UserCache getUserCache(){
-        return applicationContext.getBean(UserCache.class);
-    }
 
     public Collection<UserEntry> getAll() {
         return userCache.getAll();
@@ -38,10 +36,4 @@ public final class CacheManager implements ApplicationContextAware {
         return userCache.get(String.format(Constants.USER_CACHE_NAME, id));
     }
 
-
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
-        this.userCache = (UserCache)applicationContext.getBean("userCache");
-    }
 }

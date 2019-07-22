@@ -1,6 +1,7 @@
 package com.hwy.cache.controller;
 
 import com.hwy.cache.Service.UserService;
+import com.hwy.cache.config.RedisConfig;
 import com.hwy.cache.entity.ResultBean;
 import com.hwy.cache.entity.User;
 import io.swagger.annotations.Api;
@@ -26,6 +27,9 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    RedisConfig redisConfig;
 
     @ApiOperation("创建用户")
     @ApiImplicitParams({
