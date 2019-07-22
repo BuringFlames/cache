@@ -17,16 +17,11 @@ import java.util.Collection;
 @Component
 public final class CacheManager {
 
-    @Autowired
-    ApplicationContext applicationContext;
+    private static final UserCache userCache = new UserCache();
 
-    public CacheManager() {
-        this.userCache = SpringUtil.getBean(UserCache.class);
+    static{
+        init(userCache);
     }
-
-    @Autowired
-    private UserCache userCache;
-
 
     public Collection<UserEntry> getAll() {
         return userCache.getAll();
@@ -36,4 +31,7 @@ public final class CacheManager {
         return userCache.get(String.format(Constants.USER_CACHE_NAME, id));
     }
 
+    private static void init(AbstractCache cache) {
+        cache.init(cache);
+    }
 }

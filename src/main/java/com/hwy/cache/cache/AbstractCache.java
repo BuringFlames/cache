@@ -105,10 +105,11 @@ public abstract class AbstractCache<T, V extends Cache.Entry> implements Cache<T
                     V oldData =  cache.get(newData.getCacheKey());
                     String cacheKey = getCacheKey(data);
                     if(newData.equals(oldData)) {
-                        newCache.put(cacheKey, data);
+                        newCache.put(cacheKey, newData);
                     }
 
-                    newCache.put(cacheKey, data);
+                    newCache.put(cacheKey, newData);
+                    cache = newCache;
                 }
             }
         });
@@ -134,8 +135,8 @@ public abstract class AbstractCache<T, V extends Cache.Entry> implements Cache<T
 
     @Override
     public void init(AbstractCache cache) {
+        System.out.println("job start");
         loaderExecutor.execute(loadRunner);
-
     }
 
     private class DataLoaderTask implements Callable {
