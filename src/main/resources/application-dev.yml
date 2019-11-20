@@ -1,7 +1,7 @@
 spring:
    datasource:
 #      type: com.alibaba.druid.pool.DruidDataSource   #这里是配置druid连接池，以下都是druid的配置信息
-      url: jdbc:mysql://localhost:3306/hwy-test?serverTimezone=UTC
+      url: jdbc:mysql://localhost:3306/hwy-test?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
       driver-class-name: com.mysql.cj.jdbc.Driver
       username: root
       password: hwy123

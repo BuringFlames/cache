@@ -2,11 +2,8 @@ package com.hwy.cache.repository;
 
 import com.hwy.cache.entity.User;
 import com.hwy.cache.entity.UserExample;
-import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
-@Repository
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -18,9 +15,9 @@ public interface UserMapper {
 
     User selectByPrimaryKey(Integer id);
 
+    User getUserByName(String username);
+
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
-
-    List<User> selectAllUsers();
 }

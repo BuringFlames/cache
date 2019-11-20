@@ -6,6 +6,9 @@ package com.hwy.cache.common;
  * @date 2019/7/12 16:59
  */
 public enum Cache {
+    /**
+     * 用户cache
+     */
     USERCACHE("userCache");
 
     private Cache(String cacheName) {

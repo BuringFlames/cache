@@ -1,4 +1,4 @@
-package com.hwy.cache.Service;
+package com.hwy.cache.service;
 
 import com.hwy.cache.entity.User;
 
@@ -15,7 +15,8 @@ public interface UserService {
 
     User getUser(int id);
 
+    User getUserByName(String name);
+
     int deletedUser(int id);
 
-    List<User> getAllUsers();
 }

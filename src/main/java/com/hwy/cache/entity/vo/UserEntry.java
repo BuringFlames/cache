@@ -12,7 +12,7 @@ import java.sql.Timestamp;
  */
 public class UserEntry extends Cache.Entry{
 
-    private int id;
+    private Integer id;
     private String userName;
     private String passWard;
 
@@ -32,12 +32,11 @@ public class UserEntry extends Cache.Entry{
 
     @Override
     public boolean equals(Object object) {
-        if(this == object)
-            return true;
+        if(this == object) {return true;}
         if(object instanceof UserEntry) {
             UserEntry entry = (UserEntry) object;
             Timestamp time = new Timestamp(System.currentTimeMillis() - 5000);
-            return entry.id == this.id
+            return entry.id.equals(this.id)
                     && entry.userName.equals(this.userName)
                     && entry.passWard.equals(this.passWard)
                     && entry.getTime().before(time);
@@ -46,11 +45,11 @@ public class UserEntry extends Cache.Entry{
         return false;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
